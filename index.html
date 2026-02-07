@@ -3,37 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>NEXORIA | TEKNOFEST 2024</title>
+    <title>NEXORIA SMART | TEKNOFEST 2024</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* TEMEL AYARLAR */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { width: 100%; height: 100%; overflow-x: hidden; background: #050817; scroll-behavior: smooth; }
-        :root { --primary: #00f0ff; --secondary: #ff006e; --light: #ffffff; --gray: #8892b0; }
-        body { font-family: 'Instrument Sans', sans-serif; color: var(--light); }
+        :root { --primary: #00f0ff; --secondary: #ff006e; --light: #ffffff; --gray: #8892b0; --dark-blue: #0a0e27; }
+        body { font-family: 'Instrument Sans', sans-serif; color: var(--light); line-height: 1.6; }
         
-        /* Arka Plan */
+        /* ARKA PLAN EFEKTLERİ */
         .bg-animation { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at 20% 50%, rgba(0, 240, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255, 0, 110, 0.1) 0%, transparent 50%); }
         .grid-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-image: linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px); background-size: 50px 50px; }
 
-        /* HEADER & MENU */
-        header { position: fixed; top: 0; left: 0; width: 100%; padding: 1rem 5%; background: rgba(10, 14, 39, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--primary); z-index: 9999; }
+        /* NAVİGASYON MENÜSÜ */
+        header { position: fixed; top: 0; left: 0; width: 100%; padding: 1.2rem 5%; background: rgba(10, 14, 39, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0, 240, 255, 0.2); z-index: 9999; }
         nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-family: 'Orbitron', sans-serif; font-size: 1.4rem; font-weight: 900; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .nav-links a { color: var(--light); text-decoration: none; margin-left: 15px; font-size: 0.75rem; font-family: 'Orbitron'; transition: 0.3s; }
-        .btn-tekno { border: 1px solid var(--primary); padding: 5px 12px; border-radius: 4px; color: var(--primary) !important; }
+        .logo { font-family: 'Orbitron', sans-serif; font-size: 1.6rem; font-weight: 900; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 2px; }
+        .nav-links { display: flex; align-items: center; gap: 20px; }
+        .nav-links a { color: var(--light); text-decoration: none; font-size: 0.8rem; font-family: 'Orbitron'; transition: 0.3s; letter-spacing: 1px; }
+        .nav-links a:hover { color: var(--primary); }
+        .btn-tekno { border: 1px solid var(--primary); padding: 6px 15px; border-radius: 5px; color: var(--primary) !important; transition: 0.3s; }
         .btn-tekno:hover { background: var(--primary); color: #000 !important; }
 
-        /* Icerik */
+        /* GİRİŞ ALANI (HERO) */
         .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 5%; }
-        h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(2rem, 8vw, 4rem); text-transform: uppercase; margin-bottom: 1rem; }
+        .badge { padding: 0.5rem 1rem; background: rgba(0, 240, 255, 0.1); border: 1px solid var(--primary); border-radius: 50px; color: var(--primary); font-size: 0.7rem; margin-bottom: 1.5rem; font-family: 'Orbitron'; letter-spacing: 2px; }
+        h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(2.5rem, 8vw, 4.5rem); text-transform: uppercase; margin-bottom: 1rem; line-height: 1.1; }
         .gradient-text { background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
+        .hero p { color: var(--gray); max-width: 650px; font-size: 1.1rem; margin-bottom: 2rem; }
+
+        /* BÖLÜMLER GENEL */
         section { padding: 8rem 5% 4rem; max-width: 1200px; margin: 0 auto; }
-        .card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 240, 255, 0.1); border-radius: 15px; padding: 2rem; margin-bottom: 2rem; transition: 0.3s; }
-        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        h2 { font-family: 'Orbitron'; font-size: 2rem; margin-bottom: 3rem; text-align: center; letter-spacing: 3px; }
         
-        .fade-in { opacity: 0; transform: translateY(20px); transition: 0.6s all ease-out; }
+        /* KART TASARIMLARI */
+        .card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 240, 255, 0.1); border-radius: 20px; padding: 2.5rem; margin-bottom: 2rem; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .card:hover { border-color: var(--primary); transform: translateY(-10px); background: rgba(0, 240, 255, 0.05); }
+        .card h3 { font-family: 'Orbitron'; margin-bottom: 1rem; font-size: 1.5rem; }
+        .card p { color: var(--gray); font-size: 1rem; }
+
+        /* TEKNOFEST ÖZEL KARTLAR */
+        .tk-card { border-left: 5px solid var(--primary); }
+        .tk-secondary { border-left-color: var(--secondary); }
+        
+        /* ANİMASYONLAR */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: 0.8s all ease-out; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* MOBİL UYUMLULUK */
+        @media (max-width: 768px) {
+            .nav-links { gap: 10px; }
+            .nav-links a { font-size: 0.7rem; }
+            h1 { font-size: 2.5rem; }
+            section { padding: 5rem 5% 2rem; }
+        }
     </style>
 </head>
 <body>
@@ -51,39 +75,65 @@
     </header>
 
     <section class="hero">
+        <div class="badge">TEKNOFEST 2024 PROJECT</div>
         <h1>NEXORIA <span class="gradient-text">SMART</span></h1>
-        <p style="color: var(--gray);">Geleceğin Akıllı Güvenlik Teknolojileri</p>
+        <p>Deprem güvenliğinde devrim yaratan, göçük altı tespit ve akıllı tahliye teknolojileri ile hayat kurtarmak için buradayız.</p>
+        <div style="display: flex; gap: 15px;">
+            <a href="#projeler" style="padding: 12px 25px; background: var(--primary); color: #000; text-decoration: none; border-radius: 5px; font-weight: bold; font-family: 'Orbitron'; font-size: 0.8rem;">İNCELE</a>
+        </div>
     </section>
 
     <section id="projeler">
-        <h2 style="font-family: 'Orbitron'; margin-bottom: 2rem; text-align: center;">PROJELERİMİZ</h2>
+        <h2>SİSTEMLERİMİZ</h2>
+        
         <div class="card fade-in">
-            <h3 style="color: var(--primary); font-family: 'Orbitron';">GABS 1.0</h3>
-            <p style="color: var(--gray); margin-top: 1rem;">Göçük Altı Konumlandırma Sistemi ile enkaz altındaki can kayıplarını minimize ediyoruz.</p>
+            <h3 style="color: var(--primary);">GABS 1.0</h3>
+            <p><strong>Göçük Altı Konumlandırma Sistemi:</strong> Deprem sonrası enkaz altında kalan vatandaşlarımızın yerini, gelişmiş sensör ağı ve sinyal işleme teknolojisi ile milimetrik olarak tespit eden otonom cihaz.</p>
         </div>
+
         <div class="card fade-in">
-            <h3 style="color: var(--secondary); font-family: 'Orbitron';">AKS 1.0</h3>
-            <p style="color: var(--gray); margin-top: 1rem;">Akıllı Kapı Sistemi: Deprem anında otomatik tahliye imkanı sağlayan özel kilit mekanizması.</p>
+            <h3 style="color: var(--secondary);">AKS 1.0</h3>
+            <p><strong>Akıllı Kapı Sistemi:</strong> Sarsıntı anında yapısal gerilmeyi algılayan ve kapıların sıkışmasını engelleyerek güvenli tahliye koridoru oluşturan akıllı mekanizma.</p>
         </div>
     </section>
 
-    <section id="teknofest" class="fade-in">
-        <h2 style="font-family: 'Orbitron'; margin-bottom: 2rem; text-align: center; color: var(--secondary);">TEKNOFEST SÜRECİ</h2>
-        <div class="card" style="border-left: 5px solid var(--primary);">
-            <h4 style="color: var(--primary);">Ön Tasarım Raporu</h4>
-            <p style="color: var(--gray);">Proje vizyonu ve literatür taraması başarıyla tamamlandı.</p>
+    <section id="teknofest">
+        <h2 style="color: var(--secondary);">TEKNOFEST SÜRECİ</h2>
+        
+        <div class="card tk-card fade-in">
+            <h4 style="color: var(--primary); font-family: 'Orbitron'; margin-bottom: 0.5rem;">01. ÖN TASARIM RAPORU (ÖTR)</h4>
+            <p>Projenin özgünlüğü ve toplumsal faydası üzerine yoğunlaştığımız, literatürdeki boşlukları dolduran teknik vizyonumuzun kabul gördüğü aşama.</p>
         </div>
-        <div class="card" style="border-left: 5px solid var(--secondary);">
-            <h4 style="color: var(--secondary);">Proje Detay Raporu</h4>
-            <p style="color: var(--gray);">Teknik şemalar, sensör entegrasyonu ve prototip geliştirme aşaması.</p>
+
+        <div class="card tk-card tk-secondary fade-in">
+            <h4 style="color: var(--secondary); font-family: 'Orbitron'; margin-bottom: 0.5rem;">02. PROJE DETAY RAPORU (PDR)</h4>
+            <p>Elektronik devre şemaları, 3D tasarımlar ve algoritma akış şemalarıyla projemizi teknik olarak ispatladığımız üretim süreci.</p>
+        </div>
+
+        <div class="card tk-card fade-in" style="border-left-color: #ffd60a;">
+            <h4 style="color: #ffd60a; font-family: 'Orbitron'; margin-bottom: 0.5rem;">03. FİNAL & KRİTİK TASARIM</h4>
+            <p>Çalışan prototipin test edilmesi, mobil uygulama entegrasyonu ve büyük final sunumu için hazırlanan son aşama.</p>
         </div>
     </section>
+
+    <footer style="text-align: center; padding: 4rem 2rem; color: var(--gray); font-size: 0.8rem; border-top: 1px solid rgba(0, 240, 255, 0.1);">
+        <p>&copy; 2024 NEXORIA Smart Technologies. Tüm Hakları Saklıdır.</p>
+    </footer>
 
     <script>
+        // Kartların kaydırıldıkça gelmesini sağlayan kod
+        const observerOptions = { threshold: 0.2 };
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach((el) => {
+            observer.observe(el);
         });
-        document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
     </script>
 </body>
 </html>
