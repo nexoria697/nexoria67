@@ -3,70 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>NEXORIA Smart Security | TEKNOFEST 2024</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>NEXORIA | TEKNOFEST 2024</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Ana Tasarım Ayarları */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { 
-            width: 100%; 
-            height: 100%; 
-            overflow-x: hidden; 
-            background: #050817; 
-            scroll-behavior: smooth; 
-        }
-        :root { 
-            --primary: #00f0ff; 
-            --secondary: #ff006e; 
-            --darker: #050817; 
-            --light: #ffffff; 
-            --gray: #8892b0; 
-            --accent: #ffd60a; 
-        }
-        body { font-family: 'Instrument Sans', sans-serif; color: var(--light); line-height: 1.6; }
-
-        /* Arka Plan Efektleri */
+        html, body { width: 100%; height: 100%; overflow-x: hidden; background: #050817; scroll-behavior: smooth; }
+        :root { --primary: #00f0ff; --secondary: #ff006e; --light: #ffffff; --gray: #8892b0; }
+        body { font-family: 'Instrument Sans', sans-serif; color: var(--light); }
+        
+        /* Arka Plan */
         .bg-animation { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at 20% 50%, rgba(0, 240, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255, 0, 110, 0.1) 0%, transparent 50%); }
         .grid-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-image: linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px); background-size: 50px 50px; }
 
-        /* Modern Navigasyon Menüsü */
-        header { 
-            position: fixed; 
-            top: 0; 
-            width: 100%; 
-            padding: 1.2rem 5%; 
-            background: rgba(10, 14, 39, 0.9); 
-            backdrop-filter: blur(10px); 
-            border-bottom: 1px solid rgba(0, 240, 255, 0.2); 
-            z-index: 1000; 
-        }
+        /* HEADER & MENU */
+        header { position: fixed; top: 0; left: 0; width: 100%; padding: 1rem 5%; background: rgba(10, 14, 39, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--primary); z-index: 9999; }
         nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; font-weight: 900; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 2px; }
-        
-        .nav-links { display: flex; align-items: center; gap: 20px; }
-        .nav-links a { 
-            color: var(--light); 
-            text-decoration: none; 
-            font-size: 0.8rem; 
-            font-family: 'Orbitron'; 
-            transition: 0.3s; 
-            letter-spacing: 1px;
-        }
-        .nav-links a:hover { color: var(--primary); }
-        .btn-teknofest { 
-            color: var(--primary) !important; 
-            border: 1px solid var(--primary); 
-            padding: 6px 15px; 
-            border-radius: 5px; 
-            transition: 0.3s !important;
-        }
-        .btn-teknofest:hover { background: var(--primary); color: var(--darker) !important; }
+        .logo { font-family: 'Orbitron', sans-serif; font-size: 1.4rem; font-weight: 900; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-links a { color: var(--light); text-decoration: none; margin-left: 15px; font-size: 0.75rem; font-family: 'Orbitron'; transition: 0.3s; }
+        .btn-tekno { border: 1px solid var(--primary); padding: 5px 12px; border-radius: 4px; color: var(--primary) !important; }
+        .btn-tekno:hover { background: var(--primary); color: #000 !important; }
 
-        /* Bölümler */
+        /* Icerik */
         .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 5%; }
-        h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(2.5rem, 8vw, 4.5rem); text-transform: uppercase; margin-bottom: 1rem; line-height: 1.1; }
+        h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(2rem, 8vw, 4rem); text-transform: uppercase; margin-bottom: 1rem; }
         .gradient-text { background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        section { padding:
+        section { padding: 8rem 5% 4rem; max-width: 1200px; margin: 0 auto; }
+        .card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 240, 255, 0.1); border-radius: 15px; padding: 2rem; margin-bottom: 2rem; transition: 0.3s; }
+        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        
+        .fade-in { opacity: 0; transform: translateY(20px); transition: 0.6s all ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="grid-overlay"></div>
+
+    <header>
+        <nav>
+            <div class="logo">NEXORIA</div>
+            <div class="nav-links">
+                <a href="#projeler">SİSTEMLER</a>
+                <a href="#teknofest" class="btn-tekno">TEKNOFEST</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>NEXORIA <span class="gradient-text">SMART</span></h1>
+        <p style="color: var(--gray);">Geleceğin Akıllı Güvenlik Teknolojileri</p>
+    </section>
+
+    <section id="projeler">
+        <h2 style="font-family: 'Orbitron'; margin-bottom: 2rem; text-align: center;">PROJELERİMİZ</h2>
+        <div class="card fade-in">
+            <h3 style="color: var(--primary); font-family: 'Orbitron';">GABS 1.0</h3>
+            <p style="color: var(--gray); margin-top: 1rem;">Göçük Altı Konumlandırma Sistemi ile enkaz altındaki can kayıplarını minimize ediyoruz.</p>
+        </div>
+        <div class="card fade-in">
+            <h3 style="color: var(--secondary); font-family: 'Orbitron';">AKS 1.0</h3>
+            <p style="color: var(--gray); margin-top: 1rem;">Akıllı Kapı Sistemi: Deprem anında otomatik tahliye imkanı sağlayan özel kilit mekanizması.</p>
+        </div>
+    </section>
+
+    <section id="teknofest" class="fade-in">
+        <h2 style="font-family: 'Orbitron'; margin-bottom: 2rem; text-align: center; color: var(--secondary);">TEKNOFEST SÜRECİ</h2>
+        <div class="card" style="border-left: 5px solid var(--primary);">
+            <h4 style="color: var(--primary);">Ön Tasarım Raporu</h4>
+            <p style="color: var(--gray);">Proje vizyonu ve literatür taraması başarıyla tamamlandı.</p>
+        </div>
+        <div class="card" style="border-left: 5px solid var(--secondary);">
+            <h4 style="color: var(--secondary);">Proje Detay Raporu</h4>
+            <p style="color: var(--gray);">Teknik şemalar, sensör entegrasyonu ve prototip geliştirme aşaması.</p>
+        </div>
+    </section>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        });
+        document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>
